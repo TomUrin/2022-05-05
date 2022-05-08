@@ -228,9 +228,33 @@ $first = rand(0, 100);
 $second = rand(0, 100);
 $third = rand(0, 100);
 $vidurkis = round(($first + $second + $third) / 3);
+$vidurkis2 = 0;
+
+if ($first < 10 && $second < 10 && $third < 10 
+    || $first > 90 && $second > 90 && $third > 90 
+    || $first < 10 && $second > 90 && $third < 10 
+    || $first < 10 && $second < 10 && $third > 90
+    || $first > 90 && $second < 10 && $third < 10
+    || $first > 90 && $second > 90 && $third < 10
+    || $first > 90 && $second < 10 && $third > 90) {
+        $vidurkis2 = 0;
+} else if($first < 10 && $second < 10 || $first > 90 && $second > 90 || $first < 10 && $second > 90 || $first > 90 && $second < 10) {
+            $vidurkis2 = $third;
+} else if($first < 10 && $third < 10 || $first > 90 && $third > 90 || $first < 10 && $third > 90 || $first > 90 && $third < 10) {
+            $vidurkis2 = $second;
+} else if($third < 10 && $second < 10 || $third > 90 && $second > 90 || $third < 10 && $second > 90 || $third > 90 && $second < 10) {
+            $vidurkis2 = $first;
+} else if($first < 10 || $first > 90) {
+            $vidurkis2 = round(($second + $third) / 2);
+} else if($second < 10 || $second > 90) {
+            $vidurkis2 = round(($first + $third) / 2);
+} else if($third < 10 || $third > 90) {
+            $vidurkis2 = round(($first + $second) / 2);
+} else if ($first > 10 || $first < 90 && $second > 10 || $second < 90 && $third > 10 || $third < 90) {
+            $vidurkis2 = $vidurkis;
+}
 
 echo $BR;
-
 echo "Pirmas skaicius = $first;";
 echo $BR;
 echo $BR;
@@ -241,6 +265,9 @@ echo "Trecias skaicius = $third;";
 echo $BR;
 echo $BR;
 echo "Vidurkis = $vidurkis;";
+echo $BR;
+echo $BR;
+echo "Vidurkis2 = $vidurkis2;";
 
 ?>
 
@@ -250,7 +277,7 @@ echo "Vidurkis = $vidurkis;";
 
 $valandos = rand(1, 24);
 $minutes = rand(0, 59);
-$sekundes = rand(0, 60);
+$sekundes = rand(0, 59);
 
 $papildomosSekundes = rand(0, 300);
 
@@ -292,71 +319,314 @@ $skaicius4 = rand(1000, 9999);
 $skaicius5 = rand(1000, 9999);
 $skaicius6 = rand(1000, 9999);
 
-$pirmas = '1';
-$antras = '2';
-$trecias = '3';
-$ketvirtas = '4';
-$penktas = '5';
-$sestas = '6';
+$pirmas = 0;
+$antras = 0;
+$trecias = 0;
+$ketvirtas = 0;
+$penktas = 0;
+$sestas = 0;
 
-if ($skaicius1 < $skaicius2 
-    && $skaicius1 > $skaicius3 
-    && $skaicius1 > $skaicius4 
-    && $skaicius1 > $skaicius5 
-    && $skaicius1 > $skaicius6) {
+if ($skaicius1 < $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 < $skaicius6) {
     $pirmas = $skaicius1;
-} 
-if ($skaicius1 > $skaicius2 
-    && $skaicius1 < $skaicius3 
-    && $skaicius1 > $skaicius4 
-    && $skaicius1 > $skaicius5 
-    && $skaicius1 > $skaicius6) {
+} else
+if (   $skaicius1 > $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 < $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 < $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 < $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 < $skaicius6 
+    || $skaicius1 < $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 > $skaicius6) {
     $antras = $skaicius1;
-} 
-if ($skaicius1 > $skaicius2 
-    && $skaicius1 > $skaicius3 
-    && $skaicius1 < $skaicius4 
-    && $skaicius1 > $skaicius5 
-    && $skaicius1 > $skaicius6) {
-    $tracias = $skaicius1;
-} 
-if ($skaicius1 > $skaicius2 
-    && $skaicius1 > $skaicius3 
-    && $skaicius1 > $skaicius4 
-    && $skaicius1 < $skaicius5 
-    && $skaicius1 > $skaicius6) {
+} else
+if (   $skaicius1 > $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 > $skaicius6
+
+    || $skaicius1 < $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 < $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 < $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 > $skaicius6
+
+    || $skaicius1 < $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 < $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 > $skaicius6
+    
+    || $skaicius1 < $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 > $skaicius6) {
+    $trecias = $skaicius1;
+} else
+if (   $skaicius1 > $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 > $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 > $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 > $skaicius6
+
+    || $skaicius1 < $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 < $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 > $skaicius6
+    || $skaicius1 < $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 > $skaicius6
+
+    || $skaicius1 < $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 > $skaicius6) {
     $ketvirtas = $skaicius1;
-} 
-if ($skaicius1 > $skaicius2 
-    && $skaicius1 > $skaicius3 
-    && $skaicius1 > $skaicius4 
-    && $skaicius1 > $skaicius5 
-    && $skaicius1 < $skaicius6) {
+} else
+if (   $skaicius1 > $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 < $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 < $skaicius5 && $skaicius1 > $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 < $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 > $skaicius6
+    || $skaicius1 > $skaicius2 && $skaicius1 < $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 > $skaicius6
+    || $skaicius1 < $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 > $skaicius6) {
     $penktas = $skaicius1;
-} 
-if ($skaicius1 > $skaicius2 
-    && $skaicius1 > $skaicius3 
-    && $skaicius1 > $skaicius4 
-    && $skaicius1 > $skaicius5 
-    && $skaicius1 > $skaicius6) {
+} else
+if ($skaicius1 > $skaicius2 && $skaicius1 > $skaicius3 && $skaicius1 > $skaicius4 && $skaicius1 > $skaicius5 && $skaicius1 > $skaicius6) {
     $sestas = $skaicius1;
 }
 
-echo $BR;
-echo $skaicius1;
-echo $BR;
-echo $skaicius2;
-echo $BR;
-echo $skaicius3;
-echo $BR;
-echo $skaicius4;
-echo $BR;
-echo $skaicius5;
-echo $BR;
-echo $skaicius6;
-echo $BR;
-echo $BR;
 
+if ($skaicius2 < $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 < $skaicius6) {
+    $pirmas = $skaicius2;
+} else
+if (   $skaicius2 > $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 < $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 < $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 < $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 < $skaicius6 
+    || $skaicius2 < $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 > $skaicius6) {
+    $antras = $skaicius2;
+} else
+if (   $skaicius2 > $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 > $skaicius6
+
+    || $skaicius2 < $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 < $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 < $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 > $skaicius6
+
+    || $skaicius2 < $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 < $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 > $skaicius6
+    
+    || $skaicius2 < $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 > $skaicius6) {
+    $trecias = $skaicius2;
+} else
+if (   $skaicius2 > $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 > $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 > $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 > $skaicius6
+
+    || $skaicius2 < $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 < $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 > $skaicius6
+    || $skaicius2 < $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 > $skaicius6
+
+    || $skaicius2 < $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 > $skaicius6) {
+    $ketvirtas = $skaicius2;
+} else
+if (   $skaicius2 > $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 < $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 < $skaicius5 && $skaicius2 > $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 < $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 > $skaicius6
+    || $skaicius2 > $skaicius1 && $skaicius2 < $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 > $skaicius6
+    || $skaicius2 < $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 > $skaicius6) {
+    $penktas = $skaicius2;
+} else
+if ($skaicius2 > $skaicius1 && $skaicius2 > $skaicius3 && $skaicius2 > $skaicius4 && $skaicius2 > $skaicius5 && $skaicius2 > $skaicius6) {
+    $sestas = $skaicius2;
+}
+
+
+if ($skaicius3 < $skaicius1 && $skaicius1 < $skaicius3 && $skaicius1 < $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 < $skaicius6) {
+    $pirmas = $skaicius3;
+} else
+if (   $skaicius3 > $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 < $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 < $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 < $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 < $skaicius6 
+    || $skaicius3 < $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 > $skaicius6) {
+    $antras = $skaicius3;
+} else
+if (   $skaicius3 > $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 > $skaicius6
+
+    || $skaicius3 < $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 < $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 < $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 > $skaicius6
+
+    || $skaicius3 < $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 < $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 > $skaicius6
+    
+    || $skaicius3 < $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 > $skaicius6) {
+    $trecias = $skaicius3;
+} else
+if (   $skaicius3 > $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 > $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 > $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 > $skaicius6
+    || $skaicius3 < $skaicius1 && $skaicius3 > $skaicius3 && $skaicius3 > $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 < $skaicius1 && $skaicius3 > $skaicius3 && $skaicius3 > $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 > $skaicius6
+    || $skaicius3 < $skaicius1 && $skaicius3 > $skaicius3 && $skaicius3 < $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 > $skaicius6
+
+    || $skaicius3 < $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 > $skaicius6) {
+    $ketvirtas = $skaicius3;
+} else
+if (   $skaicius3 > $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 < $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 < $skaicius5 && $skaicius3 > $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 < $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 > $skaicius6
+    || $skaicius3 > $skaicius1 && $skaicius3 < $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 > $skaicius6
+    || $skaicius3 < $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 > $skaicius6) {
+    $penktas = $skaicius3;
+} else
+if ($skaicius3 > $skaicius1 && $skaicius3 > $skaicius2 && $skaicius3 > $skaicius4 && $skaicius3 > $skaicius5 && $skaicius3 > $skaicius6) {
+    $sestas = $skaicius3;
+}
+
+
+if ($skaicius4 < $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 < $skaicius6) {
+    $pirmas = $skaicius4;
+} else
+if (   $skaicius4 > $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 < $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 < $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 < $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 < $skaicius6 
+    || $skaicius4 < $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 > $skaicius6) {
+    $antras = $skaicius4;
+} else
+if (   $skaicius4 > $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 > $skaicius6
+
+    || $skaicius4 < $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 < $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 < $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 > $skaicius6
+
+    || $skaicius4 < $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 < $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 > $skaicius6
+    
+    || $skaicius4 < $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 > $skaicius6) {
+    $trecias = $skaicius4;
+} else
+if (   $skaicius4 > $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 > $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 > $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 > $skaicius6
+    || $skaicius4 < $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 < $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 > $skaicius6
+    || $skaicius4 < $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 > $skaicius6
+
+    || $skaicius4 < $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 > $skaicius6) {
+    $ketvirtas = $skaicius4;
+} else
+if (   $skaicius4 > $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 < $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 < $skaicius5 && $skaicius4 > $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 < $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 > $skaicius6
+    || $skaicius4 > $skaicius1 && $skaicius4 < $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 > $skaicius6
+    || $skaicius4 < $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 > $skaicius6) {
+    $penktas = $skaicius4;
+} else
+if ($skaicius4 > $skaicius1 && $skaicius4 > $skaicius2 && $skaicius4 > $skaicius3 && $skaicius4 > $skaicius5 && $skaicius4 > $skaicius6) {
+    $sestas = $skaicius4;
+}
+
+
+if ($skaicius5 < $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 < $skaicius6) {
+    $pirmas = $skaicius5;
+} else
+if (   $skaicius5 > $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 < $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 < $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 < $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 < $skaicius6 
+    || $skaicius5 < $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 > $skaicius6) {
+    $antras = $skaicius5;
+} else
+if (   $skaicius5 > $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 > $skaicius6
+
+    || $skaicius5 < $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 < $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 < $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 > $skaicius6
+
+    || $skaicius5 < $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 < $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 > $skaicius6
+    
+    || $skaicius5 < $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 > $skaicius6) {
+    $trecias = $skaicius5;
+} else
+if (   $skaicius5 > $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 > $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 > $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 > $skaicius6
+    || $skaicius5 < $skaicius1 && $skaicius5 > $skaicius5 && $skaicius5 > $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 < $skaicius1 && $skaicius5 > $skaicius5 && $skaicius5 > $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 > $skaicius6
+    || $skaicius5 < $skaicius1 && $skaicius5 > $skaicius5 && $skaicius5 < $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 > $skaicius6
+
+    || $skaicius5 < $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 > $skaicius6) {
+    $ketvirtas = $skaicius5;
+} else
+if (   $skaicius5 > $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 < $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 < $skaicius4 && $skaicius5 > $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 < $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 > $skaicius6
+    || $skaicius5 > $skaicius1 && $skaicius5 < $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 > $skaicius6
+    || $skaicius5 < $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 > $skaicius6) {
+    $penktas = $skaicius5;
+} else
+if ($skaicius5 > $skaicius1 && $skaicius5 > $skaicius2 && $skaicius5 > $skaicius3 && $skaicius5 > $skaicius4 && $skaicius5 > $skaicius6) {
+    $sestas = $skaicius5;
+}
+
+
+if ($skaicius6 < $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 < $skaicius5) {
+    $pirmas = $skaicius6;
+} else
+if (   $skaicius6 > $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 < $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 < $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 < $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 < $skaicius5 
+    || $skaicius6 < $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 > $skaicius5) {
+    $antras = $skaicius6;
+} else
+if (   $skaicius6 > $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 > $skaicius5
+
+    || $skaicius6 < $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 < $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 < $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 > $skaicius5
+
+    || $skaicius6 < $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 < $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 > $skaicius5
+    
+    || $skaicius6 < $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 > $skaicius5) {
+    $trecias = $skaicius6;
+} else
+if (   $skaicius6 > $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 > $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 > $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 > $skaicius5
+    || $skaicius6 < $skaicius1 && $skaicius6 > $skaicius6 && $skaicius6 > $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 < $skaicius1 && $skaicius6 > $skaicius6 && $skaicius6 > $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 > $skaicius5
+    || $skaicius6 < $skaicius1 && $skaicius6 > $skaicius6 && $skaicius6 < $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 > $skaicius5
+
+    || $skaicius6 < $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 > $skaicius5) {
+    $ketvirtas = $skaicius6;
+} else
+if (   $skaicius6 > $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 < $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 < $skaicius4 && $skaicius6 > $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 < $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 > $skaicius5
+    || $skaicius6 > $skaicius1 && $skaicius6 < $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 > $skaicius5
+    || $skaicius6 < $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 > $skaicius5) {
+    $penktas = $skaicius6;
+} else
+if ($skaicius6 > $skaicius1 && $skaicius6 > $skaicius2 && $skaicius6 > $skaicius3 && $skaicius6 > $skaicius4 && $skaicius6 > $skaicius5) {
+    $sestas = $skaicius6;
+}
 
 echo "$pirmas $antras $trecias $ketvirtas $penktas $sestas";
 
+?>
