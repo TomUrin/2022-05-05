@@ -87,42 +87,42 @@ $vienetai = 0;
 $dvejetai = 0;
 
 if($a === 0) {
-    $nuliai += 1;
+    $nuliai++;
 }
 if($b === 0) {
-    $nuliai += 1;
+    $nuliai++;
 }
 if($c === 0) {
-    $nuliai += 1;
+    $nuliai++;
 }
 if($d === 0) {
-    $nuliai += 1;
+    $nuliai++;
 }
 
 if($a === 1) {
-    $vienetai += 1;
+    $vienetai++;
 }
 if($b === 1) {
-    $vienetai += 1;
+    $vienetai++;
 }
 if($c === 1) {
-    $vienetai += 1;
+    $vienetai++;
 }
 if($d === 1) {
-    $vienetai += 1;
+    $vienetai++;
 }
 
 if($a === 2) {
-    $dvejetai += 1;
+    $dvejetai++;
 }
 if($b === 2) {
-    $dvejetai += 1;
+    $dvejetai++;
 }
 if($c === 2) {
-    $dvejetai += 1;
+    $dvejetai++;
 }
 if($d === 2) {
-    $dvejetai += 1;
+    $dvejetai++;
 }
 
 echo $a;
