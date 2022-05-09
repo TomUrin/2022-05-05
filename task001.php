@@ -161,37 +161,37 @@ $random2 = rand(-10, 10);
 $random3 = rand(-10, 10);
 
 if ($random1 < 0) {
-    echo "<i style='color: green;'>$random1</i>";
+    echo "<span style='color: green;'>$random1</span>";
 }
 if ($random1 === 0) {
-    echo "<i style='color: red;'>$random1</i>";
+    echo "<span style='color: red;'>$random1</span>";
 }
 if ($random1 > 0) {
-    echo "<i style='color: blue;'>$random1</i>";
+    echo "<span style='color: blue;'>$random1</span>";
 }
 
 echo $BR;
 
 if ($random2 < 0) {
-    echo "<i style='color: green;'>$random2</i>";
+    echo "<span style='color: green;'>$random2</span>";
 }
 if ($random2 === 0) {
-    echo "<i style='color: red;'>$random2</i>";
+    echo "<span style='color: red;'>$random2</span>";
 }
 if ($random2 > 0) {
-    echo "<i style='color: blue;'>$random2</i>";
+    echo "<span style='color: blue;'>$random2</span>";
 }
 
 echo $BR;
 
 if ($random3 < 0) {
-    echo "<i style='color: green;'>$random3</i>";
+    echo "<span style='color: green;'>$random3</span>";
 }
 if ($random3 === 0) {
-    echo "<i style='color: red;'>$random3</i>";
+    echo "<span style='color: red;'>$random3</span>";
 }
 if ($random3 > 0) {
-    echo "<i style='color: blue;'>$random3</i>";
+    echo "<span style='color: blue;'>$random3</span>";
 }
 
 ?>
